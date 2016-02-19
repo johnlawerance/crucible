@@ -11,6 +11,7 @@ class crucible (
   validate_string($service_ensure)
   validate_bool($service_enable)
   validate_string($service_name)
+  validate_bool($install_java)
 
 
   class { '::crucible::install': } ->

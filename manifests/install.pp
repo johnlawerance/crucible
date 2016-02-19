@@ -1,5 +1,10 @@
 class crucible::install inherits crucible {
 
+  # Install Java
+  class { 'java':
+    distribution => 'jre',
+  }
+
   # exec to download and install the crucible directory if version file doesn't exist
   exec { 'install_crucible':
     command => "/usr/bin/wget -q -O /tmp/crucible-$version.zip https://www.atlassian.com/software/crucible/downloads/binary/crucible-$version.zip && /usr/bin/unzip /tmp/crucible-$version.zip -d /tmp/ && mv /tmp/fecru-$version /opt/crucible-$version",
