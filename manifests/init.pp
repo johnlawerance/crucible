@@ -6,7 +6,7 @@ class crucible (
   $service_name = $crucible::params::service_name,
 ) inherits crucible::params {
 
-  validate_numeric($version)
+  validate_re($version, '^*\.*\.*')
   validate_bool($service_manage)
   validate_string($service_ensure)
   validate_bool($service_enable)
