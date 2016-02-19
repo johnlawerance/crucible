@@ -3,6 +3,7 @@ class crucible::install inherits crucible {
   # Install Java
   class { 'java':
     distribution => 'jre',
+    package  => 'java-1.8.0-openjdk',
   }
 
   # exec to download and install the crucible directory if version file doesn't exist
