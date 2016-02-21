@@ -1,0 +1,15 @@
+{
+  "name": "johnlawerance-crucible",
+  "version": "0.1.0",
+  "author": "John Clark",
+  "summary": "Crucible / Fisheye",
+  "license": "WTFPL",
+  "source": "https://github.com/johnlawerance/crucible.git",
+  "project_page": "https://github.com/johnlawerance/crucible",
+  "issues_url": "https://github.com/johnlawerance/crucible/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
