@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# RUN_AS: The user to run fisheye as. Its recommended that you create a separate user account for security reasons
+RUN_AS=<%= @service_user %>
+
+# FISHEYE_HOME: The path to the FishEye installation. Its recommended to create a symbolic link to the latest version so 
+# the process will still work after upgrades. 
+FISHEYE_HOME="<%= @install_dir %>"
+
+# FISHEYE_INST: The path to store Fisheye data.
+# The line below should be uncommented only if you don't have the environment variables set in /etc/environment file.
+# FISHEYE_INST="/path/to/fisheye_inst"
+fisheyectl() {
+        if [ "x$USER" != "x$RUN_AS" ]; then 
+                su - "$RUN_AS" -c "$FISHEYE_HOME/bin/fisheyectl.sh" "$1" 
+        else 
+                "$FISHEYE_HOME/bin/fisheyectl.sh" "$1"
+        fi
+}
+
+case "$1" in 
+        start)
+                fisheyectl start
+                ;;
+        stop)
+                fisheyectl stop
+                ;;
+        restart)
+                fisheyectl stop 
+                sleep 10
+                fisheyectl start
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart}"
+esac 
+
+exit 0

@@ -8,15 +8,15 @@ class crucible::install inherits crucible {
 
   # exec to download and install the crucible directory if version file doesn't exist
   exec { 'install_crucible':
-    command => "/usr/bin/wget -q -O /tmp/crucible-$version.zip https://www.atlassian.com/software/crucible/downloads/binary/crucible-$version.zip && /usr/bin/unzip /tmp/crucible-$version.zip -d /tmp/ && mv /tmp/fecru-$version /opt/crucible-$version",
+    command => "/usr/bin/wget -q -O /tmp/crucible-$version.zip https://www.atlassian.com/software/crucible/downloads/binary/crucible-$version.zip && /usr/bin/unzip /tmp/crucible-$version.zip -d /tmp/ && mv /tmp/fecru-$version $install_dir-$version",
     creates => "/opt/crucible-$version",
   }
 
   # symlink versioned directory with /opt/crucible/ directory name
   file { 'crucible_dir':
-    path   => '/opt/crucible',
+    path   => "$install_dir",
     ensure => 'link',
-    target => "/opt/crucible-$version"
+    target => "$install_dir-$version"
   }
 
 }
