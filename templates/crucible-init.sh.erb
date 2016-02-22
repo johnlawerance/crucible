@@ -12,16 +12,26 @@ FISHEYE_HOME="<%= @install_dir %>"
 
 # FISHEYE_INST: The path to store Fisheye data.
 # The line below should be uncommented only if you don't have the environment variables set in /etc/environment file.
-# FISHEYE_INST="/path/to/fisheye_inst"
+FISHEYE_INST="<%= @install_dir %>"
 fisheyectl() {
         if [ "x$USER" != "x$RUN_AS" ]; then 
-                su - "$RUN_AS" -c "$FISHEYE_HOME/bin/fisheyectl.sh" "$1" 
+          su - "$RUN_AS" -c "FISHEYE_INST=$FISHEYE_INST $FISHEYE_HOME/bin/fisheyectl.sh $1"
         else 
                 "$FISHEYE_HOME/bin/fisheyectl.sh" "$1"
         fi
 }
 
-case "$1" in 
+case "$1" in
+        status)
+                RUNNING=`ps aux|grep -i java|grep -i fisheye|wc -l`
+                if [ $RUNNING -lt 1 ]; then
+                   echo "Crucible is not running."
+                   return 3
+                else
+                   echo "Crucible is running"
+                   return 0
+                fi
+                ;;
         start)
                 fisheyectl start
                 ;;
@@ -34,7 +44,8 @@ case "$1" in
                 fisheyectl start
                 ;;
         *)
-                echo "Usage: $0 {start|stop|restart}"
+                          echo "Usage: $0 {status|start|stop|restart}"
+
 esac 
 
 exit 0
