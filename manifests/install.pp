@@ -25,7 +25,7 @@ class crucible::install inherits crucible {
     path    => "$install_dir",
     ensure  => 'link',
     owner   => "$service_user",
-    target  => "$install_dir-$version"
+    target  => "$install_dir-$version",
     require => User[$service_user],
   }
 
