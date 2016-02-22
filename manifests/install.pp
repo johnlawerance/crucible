@@ -10,7 +10,7 @@ class crucible::install inherits crucible {
   user { "$service_user":
     ensure => present,
     home   => '/home/crucible',
-    shell  => '/sbin/nologin',
+    shell  => '/bin/bash',
   }
 
   # exec to download and install the crucible directory if version file doesn't exist
