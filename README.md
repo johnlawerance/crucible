@@ -4,9 +4,6 @@
 
 1. [Description](#description)
 1. [Setup - The basics of getting started with crucible](#setup)
-    * [What crucible affects](#what-crucible-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with crucible](#beginning-with-crucible)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -14,70 +11,92 @@
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
-
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+This module installs, configures, and manages Atlassian Crucible / Fisheye.
 
 ## Setup
 
-### What crucible affects **OPTIONAL**
+### What crucible affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+* Atlassian Crucible / Fisheye
+* Java installation
 
 ### Beginning with crucible
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+Basic install using default settings.
+
+```puppet
+class { ::crucible }
+```
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+All interactions with the crucible module can be performed through the main crucible class.
+
+### Minimal installation using default settings:
+```puppet
+class { ::crucible }
+```
+
+### Install Crucible 3.10.2 and change the install location and service user:
+```puppet
+class { ::crucible
+  version      => '3.10.2'
+  install_dir  => '/usr/local/crucible'
+  service_user => 'fisheye'
+}
+```
+
+### Install Crucible, don't manage the service, and don't install java:
+```puppet
+class { ::crucible
+  service_manage => false
+  install_java   => false
+}
+```
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+### Public Classes
+
+* crucible: Main class, includes all other classes.
+
+#### Private Classes
+
+* crucible::install: Handles the packages.
+* crucible::config: Handles the configuration file.
+* crucible::service: Handles the service.
+
+### Module Parameters
+
+#### `version`
+Which version of Crucible to install (default: 3.10.0)
+#### `service_manage`
+Should puppet manage the init service? (default: true)
+#### `service_ensure`
+State the service should be (default: running, valid options: running, stopped)
+#### `service_enable`
+Should the service be enabled on boot? (default: true)
+#### `service_name`
+Name of the service (default: crucible)
+#### `install_java`
+Should the module install Java? (default: true)
+#### `install_dir`
+Where should crucible be installed? (default: '/opt/crucible')
+#### `service_user`
+What user should the service run under? (default: crucible)
+
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+### OSes Supported:
+* RHEL/CentOS 6
+
+### Dependencies:
+* puppetlabs-stdlib >= 1.0.0
+* puppetlabs-java >= 1.0.0
+
+This module has only been tested on CentOS6 using OpenJRE8 on Puppet Enterprise 2015.3
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+Please feel free to ask (or submit PRs) for feature requests, improvements, etc!
