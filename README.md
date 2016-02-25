@@ -1,4 +1,5 @@
 # crucible
+[![Build Status](https://travis-ci.org/johnlawerance/crucible.svg?branch=master)](https://github.com/johnlawerance/crucible)
 
 #### Table of Contents
 
