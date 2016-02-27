@@ -7,7 +7,9 @@ class crucible (
   $service_user = $crucible::params::service_user,
   $install_java = $crucible::params::install_java,
   $install_dir = $crucible::params::install_dir,
-) inherits crucible::params {
+) {
+
+  include ::crucible::params
 
   validate_re($version, '^*\.*\.*')
   validate_bool($service_manage)

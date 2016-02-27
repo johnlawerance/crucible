@@ -1,32 +1,34 @@
-class crucible::install inherits crucible {
+class crucible::install {
 
   # Install Java
-  class { 'java':
-    distribution => 'jre',
-    package  => 'java-1.8.0-openjdk',
+  if $crucible::install_java == true {
+    class { 'java':
+      distribution => 'jre',
+      package      => 'java-1.8.0-openjdk',
+    }
   }
 
   # Setup service user
-  user { "$service_user":
+  user { $crucible::service_user:
     ensure => present,
     home   => '/home/crucible',
     shell  => '/bin/bash',
   }
 
-  # exec to download and install the crucible directory if version file doesn't exist
+  # Download and install the crucible directory if version file doesn't exist
   exec { 'install_crucible':
-    command => "/usr/bin/wget -q -O /tmp/crucible-$version.zip https://www.atlassian.com/software/crucible/downloads/binary/crucible-$version.zip && /usr/bin/unzip /tmp/crucible-$version.zip -d /tmp/ && mv /tmp/fecru-$version $install_dir-$version && chown -R $service_user.$service_user $install_dir-$version",
-    creates => "/opt/crucible-$version",
-    require => User[$service_user],
+    command => "/usr/bin/wget -q -O /tmp/crucible-${crucible::version}.zip https://www.atlassian.com/software/crucible/downloads/binary/crucible-${crucible::version}.zip && /usr/bin/unzip /tmp/crucible-${crucible::version}.zip -d /tmp/ && mv /tmp/fecru-${crucible::version} ${crucible::install_dir}-${crucible::version} && chown -R ${crucible::service_user}.${crucible::service_user} ${crucible::install_dir}-${crucible::version}",
+    creates => "/opt/crucible-${crucible::version}",
+    require => User[$crucible::service_user],
   }
 
   # symlink versioned directory with /opt/crucible/ directory name
   file { 'crucible_dir':
-    path    => "$install_dir",
     ensure  => 'link',
-    owner   => "$service_user",
-    target  => "$install_dir-$version",
-    require => User[$service_user],
+    path    => $crucible::install_dir,
+    owner   => $crucible::service_user,
+    target  => "${crucible::install_dir}-${crucible::version}",
+    require => User[$crucible::service_user],
   }
 
 }

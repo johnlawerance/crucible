@@ -3,8 +3,7 @@ notifications:
   email:
     - john@johnlawerance.com
 env:
-  - PUPPET_VERSION=3.0
-  - PUPPET_VERSION=4.0
-  - PUPPET_VERSION=4.1
+  - PUPPET_VERSION=2.6
+  - PUPPET_VERSION=2.7
+  - PUPPET_VERSION=3.8
   - PUPPET_VERSION=4.2
-  - PUPPET_VERSION=4.3

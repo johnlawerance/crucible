@@ -6,7 +6,7 @@ class crucible::params {
   $service_ensure = 'running'
   $service_enable = true
   $service_name = 'crucible'
+  $service_user = 'crucible'
   $install_java = true
   $install_dir = '/opt/crucible'
-  $service_user = 'crucible'
 }
