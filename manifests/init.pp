@@ -1,13 +1,13 @@
 class crucible (
-  $version = $crucible::params::version,
-  $service_manage = $crucible::params::service_manage,
-  $service_ensure = $crucible::params::service_ensure,
-  $service_enable = $crucible::params::service_enable,
-  $service_name = $crucible::params::service_name,
-  $service_user = $crucible::params::service_user,
-  $install_java = $crucible::params::install_java,
-  $install_dir = $crucible::params::install_dir,
-) inherits crucible::params {
+  $version = '3.10.3',
+  $service_manage = true,
+  $service_ensure = 'running',
+  $service_enable = true,
+  $service_name = 'crucible',
+  $service_user = 'crucible',
+  $install_java = true,
+  $install_dir = '/opt/crucible',
+) {
 
   validate_re($version, '^*\.*\.*')
   validate_bool($service_manage)
@@ -23,5 +23,3 @@ class crucible (
   class { '::crucible::service': }
 
 }
-
-
