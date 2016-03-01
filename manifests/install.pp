@@ -11,7 +11,7 @@ class crucible::install {
   # Setup service user
   user { $crucible::service_user:
     ensure => present,
-    home   => '/home/crucible',
+    home   => "/home/${crucible::service_user}",
     shell  => '/bin/bash',
   }
 
