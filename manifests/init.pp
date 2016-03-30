@@ -7,6 +7,7 @@ class crucible (
   $service_user = 'crucible',
   $install_java = true,
   $install_dir = '/opt/crucible',
+  $fisheye_inst = '/opt/FISHEYE_INST'
 ) {
 
   validate_re($version, '^*\.*\.*')
@@ -17,6 +18,7 @@ class crucible (
   validate_string($service_user)
   validate_bool($install_java)
   validate_absolute_path($install_dir)
+  validate_absolute_path($fisheye_inst)
 
   class { '::crucible::install': } ->
   class { '::crucible::config': } ~>

@@ -84,6 +84,8 @@ Name of the service (default: crucible)
 Should the module install Java? (default: true)
 #### `install_dir`
 Where should crucible be installed? (default: '/opt/crucible')
+#### `fisheye_inst`
+Where should crucible's data be stored? (default: '/opt/FISHEYE_INST')
 #### `service_user`
 What user should the service run under? (default: crucible)
 
@@ -94,8 +96,9 @@ What user should the service run under? (default: crucible)
 * RHEL/CentOS 6
 
 ### Dependencies:
-* puppetlabs-stdlib >= 1.0.0
-* puppetlabs-java >= 1.0.0
+* puppetlabs-stdlib >= 3.0.0
+* puppetlabs-java >= 1.2.0
+
 
 This module has only been tested on CentOS6 using OpenJRE8 on Puppet Enterprise 2015.3
 

@@ -12,7 +12,7 @@ FISHEYE_HOME="<%= @install_dir %>"
 
 # FISHEYE_INST: The path to store Fisheye data.
 # The line below should be uncommented only if you don't have the environment variables set in /etc/environment file.
-FISHEYE_INST="<%= @install_dir %>"
+FISHEYE_INST="<%= @fisheye_inst %>"
 fisheyectl() {
         if [ "x$USER" != "x$RUN_AS" ]; then 
           su - "$RUN_AS" -c "FISHEYE_INST=$FISHEYE_INST $FISHEYE_HOME/bin/fisheyectl.sh $1"
