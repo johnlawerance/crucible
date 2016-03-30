@@ -1,3 +1,8 @@
+##2016-03-29 - Release 0.1.2
+###Summary
+ - Adding support for separate fisheye data dir. This will allow easier upgrades and a better separation of application and data.
+
+
 ##2016-02-27 - Release 0.1.1
 ###Summary
 - Fixed puppet-lint errors
