@@ -41,6 +41,7 @@
     {"name":"puppetlabs-stdlib","version_requirement":">= 3.0.0"},
     {"name":"puppetlabs-java","version_requirement":">= 1.2.0"}
   ],
+  "tags": ["crucible", "fisheye", "atlassian"],
   "data_provider": null
 }
 
