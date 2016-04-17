@@ -9,7 +9,8 @@ class crucible::install {
       }
 
       'Ubuntu':{
-        apt::ppa { 'ppa:openjdk-r/ppa': }
+        include apt
+        apt::ppa { 'ppa:openjdk-r/ppa': notify => Exec['apt_update'] }
         $java_package = 'openjdk-8-jre'
       }
 
