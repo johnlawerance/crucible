@@ -13,23 +13,27 @@ class crucible::install {
 
     case $::operatingsystem {
       'RedHat', 'CentOS': {
-        $java_package = 'java-1.8.0-openjdk'
+
+        class { 'java':
+          distribution => 'jre',
+          package      => 'java-1.8.0-openjdk',
+        }
       }
 
       'Ubuntu':{
         include apt
         apt::ppa { 'ppa:openjdk-r/ppa': notify => Exec['apt_update'] }
-        $java_package = 'openjdk-8-jre'
+
+        class { 'java':
+          distribution => 'jre',
+          package      => 'openjdk-8-jre',
+          require      => Apt::Ppa['ppa:openjdk-r/ppa'],
+        }
       }
 
       default: {
         fail("Module ${module_name} is not supported on ${::operatingsystem}")
       }
-    }
-
-    class { 'java':
-      distribution => 'jre',
-      package      => $java_package,
     }
   }
 
