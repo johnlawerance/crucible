@@ -39,9 +39,10 @@ class crucible::install {
 
   # Setup service user
   user { $crucible::service_user:
-    ensure => present,
-    home   => "/home/${crucible::service_user}",
-    shell  => '/bin/bash',
+    ensure     => present,
+    home       => "/home/${crucible::service_user}",
+    managehome => true,
+    shell      => '/bin/bash',
   }
 
   # Download and install the crucible directory if version file doesn't exist
