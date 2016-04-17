@@ -94,10 +94,12 @@ What user should the service run under? (default: crucible)
 
 ### OSes Supported:
 * RHEL/CentOS 6
+* Ubuntu 12.04, 14.04
 
 ### Dependencies:
 * puppetlabs-stdlib >= 3.0.0
 * puppetlabs-java >= 1.2.0
+* puppetlabs-apt >= 1.4.0 (Only required for Ubuntu)
 
 
 This module has only been tested on CentOS6 using OpenJRE8 on Puppet Enterprise 2015.3

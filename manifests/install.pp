@@ -2,9 +2,25 @@ class crucible::install {
 
   # Install Java
   if $crucible::install_java == true {
+
+    case $::operatingsystem {
+      'RedHat', 'CentOS': {
+        $java_package = 'java-1.8.0-openjdk'
+      }
+
+      'Ubuntu':{
+        apt::ppa { 'ppa:openjdk-r/ppa': }
+        $java_package = 'openjdk-8-jre'
+      }
+
+      default: {
+        fail("Module ${module_name} is not supported on ${::operatingsystem}")
+      }
+    }
+
     class { 'java':
       distribution => 'jre',
-      package      => 'java-1.8.0-openjdk',
+      package      => $java_package,
     }
   }
 
