@@ -1,5 +1,5 @@
 class crucible (
-  $version = '3.10.3',
+  $version = '4.0.3',
   $service_manage = true,
   $service_ensure = 'running',
   $service_enable = true,
@@ -7,7 +7,9 @@ class crucible (
   $service_user = 'crucible',
   $install_java = true,
   $install_dir = '/opt/crucible',
-  $fisheye_inst = '/opt/FISHEYE_INST'
+  $fisheye_inst = '/opt/FISHEYE_INST',
+  $install_unzip = true,
+  $install_wget = true
 ) {
 
   validate_re($version, '^*\.*\.*')

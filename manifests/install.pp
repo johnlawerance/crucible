@@ -1,18 +1,48 @@
 class crucible::install {
 
+  # Install ansilary packages
+  if $crucible::install_unzip == true {
+    ensure_resource('package', 'unzip', {'ensure' => 'present'})
+  }
+  if $crucible::install_wget == true {
+    ensure_resource('package', 'wget', {'ensure' => 'present'})
+  }
+
   # Install Java
   if $crucible::install_java == true {
-    class { 'java':
-      distribution => 'jre',
-      package      => 'java-1.8.0-openjdk',
+
+    case $::operatingsystem {
+      'RedHat', 'CentOS': {
+
+        class { 'java':
+          distribution => 'jre',
+          package      => 'java-1.8.0-openjdk',
+        }
+      }
+
+      'Ubuntu':{
+        include apt
+        apt::ppa { 'ppa:openjdk-r/ppa': notify => Exec['apt_update'] }
+
+        class { 'java':
+          distribution => 'jre',
+          package      => 'openjdk-8-jre',
+          require      => Apt::Ppa['ppa:openjdk-r/ppa'],
+        }
+      }
+
+      default: {
+        fail("Module ${module_name} is not supported on ${::operatingsystem}")
+      }
     }
   }
 
   # Setup service user
   user { $crucible::service_user:
-    ensure => present,
-    home   => "/home/${crucible::service_user}",
-    shell  => '/bin/bash',
+    ensure     => present,
+    home       => "/home/${crucible::service_user}",
+    managehome => true,
+    shell      => '/bin/bash',
   }
 
   # Download and install the crucible directory if version file doesn't exist

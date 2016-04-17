@@ -33,5 +33,5 @@ deploy:
     secure: "dxBw7/tc+W8RpZMFm3PRuiIs7F1lpFVyzDGW74YplEc4rIMMvySn9f/fpfTFVwAb6p8g7hBJxHxVhj2ZQ8//SuDwcieWMxW5ALeoNY9JsjF9Zlmjam1xSAZGF03sK34XJSX9uCksqnkIcZ8+eFEflDMv1xuasZezGQn+Xv7E0YSHPNVTQFCOm1AUtiUokYVKLPV89RomOdFmi+uS/smwD01h/LgBnJQM7MZ04l2pZnk7aqgMCaKN6zEpvpiDJtg01WCIxsC/wwrBVBGHHFRuGxFMG4YCIvh83NHCDCqPhSvcRII/a6Kv6N7snm3HmKLoZRYYBRlLNKL6aHEohWYeolyzIArBAxzHDaXrqExaDxaGfZVKVgC7n+5X5MmgfNQGyquqUfGga9RMfmeSAUukkVxsJyqSCgJO9+O+d2G3kDIO3qq3X7UoR6wNYebDZsy3X7hTztTKXFtMXNAtm4dyT86N60B3PD1r7S5xbfmfUuI6SNU4L9avay4O94B9xiXpYjYEhiEZRVsj7nZLzkX0abStbtSUsL9nmdGLh+A1tWRFuoarDdINYuZ7otgswXfYov/W9Mn+oiTXrc0JBpakHSEHeKr9NIdGdK5qJlK7rzkQY+/nN26Kg7mBvNZnidRKYbaj86TH7t9VwToHg4ejwiSKMvjTrsz2uuH8yuR2OAQ="
   on:
     tags: true
-    all_branches: true
+    all_branches: false
     rvm: 1.9.3

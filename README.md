@@ -71,7 +71,7 @@ class { ::crucible
 ### Module Parameters
 
 #### `version`
-Which version of Crucible to install (default: 3.10.0)
+Which version of Crucible to install (default: 4.0.3)
 #### `service_manage`
 Should puppet manage the init service? (default: true)
 #### `service_ensure`
@@ -88,19 +88,25 @@ Where should crucible be installed? (default: '/opt/crucible')
 Where should crucible's data be stored? (default: '/opt/FISHEYE_INST')
 #### `service_user`
 What user should the service run under? (default: crucible)
+#### `install_unzip`
+Should the module install unzip? (default: true)
+#### `install_wget`
+Should the module install wget? (default: true)
 
 
 ## Limitations
 
 ### OSes Supported:
 * RHEL/CentOS 6
+* Ubuntu 12.04, 14.04
 
 ### Dependencies:
 * puppetlabs-stdlib >= 3.0.0
 * puppetlabs-java >= 1.2.0
+* puppetlabs-apt >= 1.4.0 (Only required for Ubuntu)
 
 
-This module has only been tested on CentOS6 using OpenJRE8 on Puppet Enterprise 2015.3
+This module has only been tested on CentOS6, Ubuntu 12.04, and Ubuntu 14.04 using OpenJRE8 on Puppet Enterprise 2015.3
 
 ## Development
 

@@ -1,8 +1,8 @@
 {
   "name": "johnlawerance-crucible",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "John Clark",
-  "summary": "Crucible / Fisheye",
+  "summary": "Install, configure, and manage Atlassian Crucible / Fisheye.",
   "license": "WTFPL",
   "source": "https://github.com/johnlawerance/crucible.git",
   "project_page": "https://github.com/johnlawerance/crucible",
@@ -35,11 +35,19 @@
         "5",
         "6"
       ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
     }
   ],
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 3.0.0"},
-    {"name":"puppetlabs-java","version_requirement":">= 1.2.0"}
+    {"name":"puppetlabs-java","version_requirement":">= 1.2.0"},
+    {"name":"puppetlabs-apt","version_requirement":">= 1.4.0"}
   ],
   "tags": ["crucible", "fisheye", "atlassian"],
   "data_provider": null
