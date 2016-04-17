@@ -7,7 +7,9 @@ class crucible (
   $service_user = 'crucible',
   $install_java = true,
   $install_dir = '/opt/crucible',
-  $fisheye_inst = '/opt/FISHEYE_INST'
+  $fisheye_inst = '/opt/FISHEYE_INST',
+  $install_unzip = true,
+  $install_wget = true
 ) {
 
   validate_re($version, '^*\.*\.*')

@@ -88,6 +88,10 @@ Where should crucible be installed? (default: '/opt/crucible')
 Where should crucible's data be stored? (default: '/opt/FISHEYE_INST')
 #### `service_user`
 What user should the service run under? (default: crucible)
+#### `install_unzip`
+Should the module install unzip? (default: true)
+#### `install_wget`
+Should the module install wget? (default: true)
 
 
 ## Limitations

@@ -1,5 +1,13 @@
 class crucible::install {
 
+  # Install ansilary packages
+  if $crucible::install_unzip == true {
+    ensure_resource('package', 'unzip', {'ensure' => 'present'})
+  }
+  if $crucible::install_wget == true {
+    ensure_resource('package', 'wget', {'ensure' => 'present'})
+  }
+
   # Install Java
   if $crucible::install_java == true {
 
