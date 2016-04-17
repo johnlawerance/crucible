@@ -71,7 +71,7 @@ class { ::crucible
 ### Module Parameters
 
 #### `version`
-Which version of Crucible to install (default: 3.10.0)
+Which version of Crucible to install (default: 4.0.3)
 #### `service_manage`
 Should puppet manage the init service? (default: true)
 #### `service_ensure`
@@ -106,7 +106,7 @@ Should the module install wget? (default: true)
 * puppetlabs-apt >= 1.4.0 (Only required for Ubuntu)
 
 
-This module has only been tested on CentOS6 using OpenJRE8 on Puppet Enterprise 2015.3
+This module has only been tested on CentOS6, Ubuntu 12.04, and Ubuntu 14.04 using OpenJRE8 on Puppet Enterprise 2015.3
 
 ## Development
 

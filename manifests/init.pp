@@ -1,5 +1,5 @@
 class crucible (
-  $version = '3.10.3',
+  $version = '4.0.3',
   $service_manage = true,
   $service_ensure = 'running',
   $service_enable = true,
