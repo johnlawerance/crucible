@@ -1,3 +1,7 @@
+##2016-10-18 - Release 0.2.1
+###Summary
+ - Fixed the version regex validation (Issue #7)
+
 ##2016-04-17 - Release 0.2.0
 ###Summary
  - Adding Ubuntu 12.04 and 14.04 support

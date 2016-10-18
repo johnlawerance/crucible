@@ -1,6 +1,6 @@
 {
   "name": "johnlawerance-crucible",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "John Clark",
   "summary": "Install, configure, and manage Atlassian Crucible / Fisheye.",
   "license": "WTFPL",
