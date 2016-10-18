@@ -12,7 +12,7 @@ class crucible (
   $install_wget = true
 ) {
 
-  validate_re($version, '^*\.*\.*')
+  validate_re($version, '^.*\.*\.*$')
   validate_bool($service_manage)
   validate_string($service_ensure)
   validate_bool($service_enable)
