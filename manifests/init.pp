@@ -9,7 +9,8 @@ class crucible (
   $install_dir = '/opt/crucible',
   $fisheye_inst = '/opt/crucible-data',
   $install_unzip = true,
-  $install_wget = true
+  $install_wget = true,
+  $download_url = 'https://www.atlassian.com/software/crucible/downloads/binary',
 ) {
 
   validate_re($version, '^.*\.*\.*$')
