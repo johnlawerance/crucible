@@ -1,6 +1,8 @@
-##[TBD] - Release 0.3.0
+##2017-02-04 - Release 0.3.0
 ###Summary
- - FISHEYE_INST should not be a literal path (Issue #8)
+ - FISHEYE_INST should not be a literal path (Issue #9)
+ - What License is governing this Module? (Issue #11)
+ - Making the download URL customisable to allow using an alternate download URL. (PR #12)
 
 #### Upgrading to 0.3.0
  - `FISHEYE_INST` (the location where the fisheye/crucible data is stored) default location has been moved from /opt/FISHEYE_INST to /opt/crucible-data. If you're upgrading from a version <= 0.2.1 you should do one of the following:
@@ -11,7 +13,7 @@
     fisheye_inst => '/opt/FISHEYE_INST'
    }
    ```
-   1. Execute the new version of the `johnlawerance/crucible` puppet module and after it runs and installs copy the contents of your old $FISHEYE_INST data directory to the newly laid down `/opt/crucible-data`.
+   1. Execute the new version of the `johnlawerance/crucible` puppet module and after it runs copy the contents of your old $FISHEYE_INST data directory to the newly laid down `/opt/crucible-data`.
 
 ##2016-10-18 - Release 0.2.1
 ###Summary

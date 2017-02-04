@@ -92,6 +92,8 @@ What user should the service run under? (default: crucible)
 Should the module install unzip? (default: true)
 #### `install_wget`
 Should the module install wget? (default: true)
+#### `download_url`
+Specify alternate download URL (default: 'https://www.atlassian.com/software/crucible/downloads/binary')
 
 
 ## Limitations
