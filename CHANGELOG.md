@@ -1,3 +1,7 @@
+##2017-12-16 - Release 0.3.1
+###Summary
+ - Make the service user's home directory customizable. (PR #14)
+
 ##2017-02-04 - Release 0.3.0
 ###Summary
  - FISHEYE_INST should not be a literal path (Issue #9)

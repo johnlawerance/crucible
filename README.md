@@ -84,6 +84,8 @@ Name of the service (default: crucible)
 Should the module install Java? (default: true)
 #### `install_dir`
 Where should crucible be installed? (default: '/opt/crucible')
+#### `home_dir`
+Where should the service user's home directory be (default: '/home/${service_user}')
 #### `fisheye_inst`
 Where should crucible's data be stored? (default: '/opt/crucible-data')
 #### `service_user`
