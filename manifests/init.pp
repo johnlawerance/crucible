@@ -6,6 +6,8 @@ class crucible (
   $service_name = 'crucible',
   $service_user = 'crucible',
   $install_java = true,
+  $java_home = undef,
+  $java_opts = undef,
   $install_dir = '/opt/crucible',
   $home_dir = undef,
   $fisheye_inst = '/opt/crucible-data',

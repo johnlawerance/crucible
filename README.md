@@ -82,6 +82,10 @@ Should the service be enabled on boot? (default: true)
 Name of the service (default: crucible)
 #### `install_java`
 Should the module install Java? (default: true)
+#### `java_home`
+Should crucible use a specified JAVA_HOME? (default: undef)
+#### `java_opts`
+Which Java VM arguments should be set when running crucible? (default: undef)
 #### `install_dir`
 Where should crucible be installed? (default: '/opt/crucible')
 #### `home_dir`
@@ -101,8 +105,8 @@ Specify alternate download URL (default: 'https://www.atlassian.com/software/cru
 ## Limitations
 
 ### OSes Supported:
-* RHEL/CentOS 6
-* Ubuntu 12.04, 14.04
+* RHEL/CentOS 6, 7
+* Ubuntu 12.04, 14.04, 16.04
 
 ### Dependencies:
 * puppetlabs-stdlib >= 3.0.0
@@ -110,7 +114,7 @@ Specify alternate download URL (default: 'https://www.atlassian.com/software/cru
 * puppetlabs-apt >= 1.4.0 (Only required for Ubuntu)
 
 
-This module has only been tested on CentOS6, Ubuntu 12.04, and Ubuntu 14.04 using OpenJRE8 on Puppet Enterprise 2015.3
+This module has only been tested on CentOS6, CentOS8, Ubuntu 12.04, Ubuntu 14.04 and Ubuntu 16.04 using OpenJRE8 on Puppet Enterprise 2015.3
 
 ## Development
 
