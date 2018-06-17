@@ -114,7 +114,7 @@ Specify alternate download URL (default: 'https://www.atlassian.com/software/cru
 * puppetlabs-apt >= 1.4.0 (Only required for Ubuntu)
 
 
-This module has only been tested on CentOS6, CentOS8, Ubuntu 12.04, Ubuntu 14.04 and Ubuntu 16.04 using OpenJRE8 on Puppet Enterprise 2015.3
+This module has only been tested on CentOS6, CentOS7, Ubuntu 12.04, Ubuntu 14.04 and Ubuntu 16.04 using OpenJRE8 on Puppet Enterprise 2015.3
 
 ## Development
 

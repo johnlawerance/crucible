@@ -40,8 +40,8 @@ class crucible::service inherits crucible {
         ensure  => present,
         content => template('crucible/crucible.service.erb'),
         mode    => '0644',
-      } ~>
-      exec { 'crucible-systemd-reload-before-service':
+      }
+      ~> exec { 'crucible-systemd-reload-before-service':
         path        => ['/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/'],
         command     => 'systemctl daemon-reload > /dev/null',
         notify      => Service['crucible'],

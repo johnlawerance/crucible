@@ -17,9 +17,9 @@ class crucible (
 ) {
 
   if $home_dir {
-  	$homedir = $home_dir
+    $homedir = $home_dir
   } else {
-  	$homedir = "/home/${service_user}"
+    $homedir = "/home/${service_user}"
   }
 
   validate_re($version, '^.*\.*\.*$')
@@ -33,8 +33,8 @@ class crucible (
   validate_absolute_path($homedir)
   validate_absolute_path($fisheye_inst)
 
-  class { '::crucible::install': } ->
-  class { '::crucible::config': } ~>
-  class { '::crucible::service': }
+  class { '::crucible::install': }
+  -> class { '::crucible::config': }
+  ~> class { '::crucible::service': }
 
 }
