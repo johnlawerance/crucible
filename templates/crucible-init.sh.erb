@@ -6,6 +6,15 @@
 # RUN_AS: The user to run fisheye as. Its recommended that you create a separate user account for security reasons
 RUN_AS=<%= @service_user %>
 
+<% if @java_home %>
+# JAVA_HOME: The path to Java installation
+JAVA_HOME="<%= @java_home %>"
+<% end %>
+<% if @java_opts %>
+# FISHEYE_OPTS: JVM options
+FISHEYE_OPTS="<%= @java_opts %>"
+<% end %>
+
 # FISHEYE_HOME: The path to the FishEye installation. Its recommended to create a symbolic link to the latest version so 
 # the process will still work after upgrades. 
 FISHEYE_HOME="<%= @install_dir %>"
@@ -15,7 +24,7 @@ FISHEYE_HOME="<%= @install_dir %>"
 FISHEYE_INST="<%= @fisheye_inst %>"
 fisheyectl() {
         if [ "x$USER" != "x$RUN_AS" ]; then 
-          su - "$RUN_AS" -c "FISHEYE_INST=$FISHEYE_INST $FISHEYE_HOME/bin/fisheyectl.sh $1"
+          su - "$RUN_AS" -c "FISHEYE_INST=$FISHEYE_INST <% if @java_home -%>JAVA_HOME=$JAVA_HOME<% end -%> <% if @java_opts -%>FISHEYE_OPTS=$FISHEYE_OPTS<% end -%> $FISHEYE_HOME/bin/fisheyectl.sh $1"
         else 
                 "$FISHEYE_HOME/bin/fisheyectl.sh" "$1"
         fi

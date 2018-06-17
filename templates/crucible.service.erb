@@ -1,0 +1,26 @@
+[Unit]
+Description=Atlassian Fisheye + Crucible Server
+After=network.target
+
+[Service]
+Type=forking
+
+<% if @java_home -%>
+Environment='JAVA_HOME=<%= @java_home %>'
+<% end -%>
+<% if @java_opts -%>
+Environment='FISHEYE_OPTS=<%= @java_opts %>'
+<% end -%>
+Environment='FISHEYE_HOME=<%= @install_dir %>'
+Environment='FISHEYE_INST=<%= @fisheye_inst %>'
+
+ExecStart=<%= @install_dir %>/bin/fisheyectl.sh start
+ExecStop=<%= @install_dir %>/bin/fisheyectl.sh stop
+
+User=<%= @service_user %>
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
