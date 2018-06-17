@@ -1,7 +1,7 @@
 ## 2017-12-16 - Release 0.4.0
 ### Summary
- - Adding support for Ubuntu 16.04 and CentOS 7 / systemd (PR #14)
- - Adding support for setting `java_home` and `java_opts` (PR #14)
+ - Adding support for Ubuntu 16.04 and CentOS 7 / systemd (PR #15)
+ - Adding support for setting `java_home` and `java_opts` (PR #15)
 
 ## 2017-12-16 - Release 0.3.1
 ### Summary
