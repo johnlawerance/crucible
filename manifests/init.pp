@@ -14,6 +14,9 @@ class crucible (
   $install_unzip = true,
   $install_wget = true,
   $download_url = 'https://www.atlassian.com/software/crucible/downloads/binary',
+  $user_manage = true,
+  $internet_proxy = undef,
+  $create_symlink = true,
 ) {
 
   if $home_dir {
@@ -23,7 +26,9 @@ class crucible (
   }
 
   validate_re($version, '^.*\.*\.*$')
+  validate_bool($create_symlink)
   validate_bool($service_manage)
+  validate_bool($user_manage)
   validate_string($service_ensure)
   validate_bool($service_enable)
   validate_string($service_name)
