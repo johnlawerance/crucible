@@ -1,3 +1,7 @@
+## TBD - Release 0.5.0
+### Summary
+ - Migrate from raw exec to archive module for installation, add proxy support, make user/group mgmt toggleable (PR #17)
+
 ## 2018-06-17 - Release 0.4.0
 ### Summary
  - Adding support for Ubuntu 16.04 and CentOS 7 / systemd (PR #15)
