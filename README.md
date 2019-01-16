@@ -74,6 +74,8 @@ class { ::crucible
 Which version of Crucible to install (default: 4.0.3)
 #### `service_manage`
 Should puppet manage the init service? (default: true)
+#### `user_manage`
+Should puppet create the service user/group? (default: true)
 #### `service_ensure`
 State the service should be (default: running, valid options: running, stopped)
 #### `service_enable`
@@ -100,6 +102,8 @@ Should the module install unzip? (default: true)
 Should the module install wget? (default: true)
 #### `download_url`
 Specify alternate download URL (default: 'https://www.atlassian.com/software/crucible/downloads/binary')
+#### `internet_proxy`
+Specify proxy settings when installing behind a proxy (default: undef)
 
 
 ## Limitations
