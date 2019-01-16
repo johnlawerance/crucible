@@ -74,17 +74,6 @@ class crucible::install {
     ]
   }
 
-  # symlink versioned directory with /opt/crucible/ directory name
-  if $crucible::create_symlink == true {
-    file { 'crucible_dir':
-      ensure  => 'link',
-      path    => $crucible::install_dir,
-      owner   => $crucible::service_user,
-      target  => "${crucible::install_dir}-${crucible::version}",
-      require => User[$crucible::service_user],
-    }
-  }
-
   # Create FISHETE_INST data directory
   file { 'fisheye_inst':
     ensure  => 'directory',

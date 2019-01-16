@@ -11,11 +11,11 @@ Environment='JAVA_HOME=<%= @java_home %>'
 <% if @java_opts -%>
 Environment='FISHEYE_OPTS=<%= @java_opts %>'
 <% end -%>
-Environment='FISHEYE_HOME=<%= @install_dir %>'
+Environment='FISHEYE_HOME=<%= @install_dir -%>/fecru-<%= @version %>'
 Environment='FISHEYE_INST=<%= @fisheye_inst %>'
 
-ExecStart=<%= @install_dir %>/bin/fisheyectl.sh start
-ExecStop=<%= @install_dir %>/bin/fisheyectl.sh stop
+ExecStart=<%= @install_dir -%>/fecru-<%= @version %>/bin/fisheyectl.sh start
+ExecStop=<%= @install_dir -%>/fecru-<%= @version %>/bin/fisheyectl.sh stop
 
 User=<%= @service_user %>
 UMask=0007
