@@ -38,27 +38,40 @@ class crucible::install {
   }
 
   # Setup service user
-  user { $crucible::service_user:
-    ensure     => present,
-    home       => $crucible::homedir,
-    managehome => true,
-    shell      => '/bin/bash',
+  if $crucible::user_manage == true {
+    user { $crucible::service_user:
+      ensure     => present,
+      home       => $crucible::homedir,
+      managehome => true,
+      shell      => '/bin/bash',
+    }
+  }
+
+  file { $crucible::install_dir:
+    ensure => directory,
+    owner  => $crucible::service_user,
+    group  => $crucible::service_user,
+    mode   => '0755',
   }
 
   # Download and install the crucible directory if version file doesn't exist
-  exec { 'install_crucible':
-    command => "/usr/bin/wget -q -O /tmp/crucible-${crucible::version}.zip ${crucible::download_url}/crucible-${crucible::version}.zip && /usr/bin/unzip /tmp/crucible-${crucible::version}.zip -d /tmp/ && mv /tmp/fecru-${crucible::version} ${crucible::install_dir}-${crucible::version} && chown -R ${crucible::service_user}.${crucible::service_user} ${crucible::install_dir}-${crucible::version}",
-    creates => "${crucible::install_dir}-${crucible::version}",
-    require => User[$crucible::service_user],
-  }
+  $file = "crucible-${crucible::version}.zip"
 
-  # symlink versioned directory with /opt/crucible/ directory name
-  file { 'crucible_dir':
-    ensure  => 'link',
-    path    => $crucible::install_dir,
-    owner   => $crucible::service_user,
-    target  => "${crucible::install_dir}-${crucible::version}",
-    require => User[$crucible::service_user],
+  archive { $file:
+    source          => "${crucible::download_url}/${file}",
+    path            => "/tmp/$file",
+    user            => $crucible::service_user,
+    group           => $crucible::service_user,
+    extract         => true,
+    extract_path    => $crucible::install_dir,
+    cleanup         => true,
+    proxy_server    => $crucible::internet_proxy,
+    allow_insecure  => true,
+    creates         => "${crucible::install_dir}/fecru-${crucible::version}",
+    require         => [ 
+      User[$crucible::service_user],
+      File[$crucible::install_dir],
+    ]
   }
 
   # Create FISHETE_INST data directory
