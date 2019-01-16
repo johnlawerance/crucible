@@ -47,6 +47,13 @@ class crucible::install {
     }
   }
 
+  file { $crucible::install_dir:
+    ensure => present,
+    owner  => $crucible::service_user,
+    group  => $crucible::service_user,
+    mode   => '0755',
+  }
+
   # Download and install the crucible directory if version file doesn't exist
   $file = "crucible-${crucible::version}.zip"
 
@@ -61,7 +68,10 @@ class crucible::install {
     proxy_server    => $crucible::internet_proxy,
     allow_insecure  => true,
     creates         => "${crucible::install_dir}/fecru-${crucible::version}",
-    require         => User[$crucible::service_user],
+    require         => [ 
+      User[$crucible::service_user],
+      File[$crucible::install_dir],
+    ]
   }
 
   # symlink versioned directory with /opt/crucible/ directory name
