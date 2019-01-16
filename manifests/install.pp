@@ -52,6 +52,7 @@ class crucible::install {
     owner  => $crucible::service_user,
     group  => $crucible::service_user,
     mode   => '0755',
+    before => Archive[$file],
   }
 
   # Download and install the crucible directory if version file doesn't exist
