@@ -48,11 +48,10 @@ class crucible::install {
   }
 
   file { $crucible::install_dir:
-    ensure => present,
+    ensure => directory,
     owner  => $crucible::service_user,
     group  => $crucible::service_user,
     mode   => '0755',
-    before => Archive[$file],
   }
 
   # Download and install the crucible directory if version file doesn't exist
